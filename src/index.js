@@ -137,13 +137,10 @@ export default (options = {}) => {
       }
     },
 
-    augmentChunkHash() {
+    augmentChunkHash(chunkInfo) {
       if (extracted.size === 0) return
-      const extractedValue = [...extracted].reduce((object, [key, value]) => ({
-        ...object,
-        [key]: value
-      }), {})
-      return JSON.stringify(extractedValue)
+
+      return JSON.stringify(chunkInfo.name);
     },
 
     async generateBundle(options_, bundle) {
